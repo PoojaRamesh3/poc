@@ -21,11 +21,11 @@ const Form = () => {
             <Link text={"Forgot your password?"} />
           </div>
         </div>
-        <SignInButton />
+        <SignInButton label={"Sign in"} />
         <div className="flex items-center justify-center space-x-2 my-5">
-          <span className="h-px w-16 bg-gray-100"></span>
-          <span className="text-gray-300 font-normal">or</span>
-          <span className="h-px w-16 bg-gray-100"></span>
+          <span className="h-px w-16 bg-gray-200"></span>
+          <span className="text-gray-500 font-normal">or</span>
+          <span className="h-px w-16 bg-gray-200"></span>
         </div>
         <div className="flex justify-center gap-5 w-full ">
           <SocialMediaButton label={"Google"} />
