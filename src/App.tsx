@@ -1,9 +1,9 @@
-import LoginPage from "./screens/LoginPage";
+import Router from "./Router";
 
 const App = () => {
   return (
     <>
-      <LoginPage />
+      <Router />
     </>
   );
 };
