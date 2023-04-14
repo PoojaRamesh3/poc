@@ -1,11 +1,11 @@
 import LoginPage from "./screens/LoginPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="">
+    <>
       <LoginPage />
-    </div>
+    </>
   );
-}
+};
 
 export default App;
