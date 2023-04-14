@@ -8,7 +8,7 @@ const Form = () => {
   return (
     <div className="p-12 bg-white mx-auto rounded-3xl w-96 ">
       <div className="mb-7">
-        <h3 className="font-semibold text-2xl text-gray-800">Sign In </h3>
+        <h3 className="font-semibold text-2xl text-gray-800">Sign In</h3>
         <p className="text-gray-400">
           Don't have an account? <Link text={"Sign Up"} />
         </p>
