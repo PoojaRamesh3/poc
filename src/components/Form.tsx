@@ -7,8 +7,14 @@ import { useNavigate } from "react-router-dom";
 const Form = () => {
   const navigate = useNavigate();
 
-  const [loginInfo, setLoginInfo] = useState([]);
-  const [userData, setData] = useState("");
+  const [loginInfo, setLoginInfo] = useState<any>({
+    id: null,
+    email: "",
+    password: "",
+  });
+
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   useEffect(() => {
     fetch("https://64393d6f4660f26eb1adef4f.mockapi.io/users")
@@ -18,18 +24,25 @@ const Form = () => {
       });
   }, []);
 
-  const data = loginInfo.filter((res) => {
-    return JSON.stringify(res)
-      .toLocaleLowerCase()
-      .match(userData.toLocaleLowerCase());
-  });
-
-  if (data != null && userData === "pooja.ramesh331@gmail.com") {
-    navigate("/home");
-  }
-
   const submitHandler = (event: any) => {
     event.preventDefault();
+
+    let found = false;
+    for (var i = 0; i < loginInfo.length; i++) {
+      if (
+        loginInfo[i].email == userEmail &&
+        loginInfo[i].password == userPassword
+      ) {
+        found = true;
+        break;
+      }
+    }
+
+    if (found == true && userPassword != null) {
+      navigate("/home");
+    } else {
+      alert("Login Failed!");
+    }
   };
 
   return (
@@ -45,13 +58,13 @@ const Form = () => {
           className="w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
           type=""
           placeholder="Email"
-          onChange={(e) => setData(e.target.value)}
+          onChange={(e) => setUserEmail(e.target.value)}
         />
         <input
           className="w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
           type=""
           placeholder="Password"
-          onChange={(e) => setData(e.target.value)}
+          onChange={(e) => setUserPassword(e.target.value)}
         />
         <div className="flex items-center justify-between">
           <div className="text-sm ml-auto">
