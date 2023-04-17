@@ -15,6 +15,9 @@ const Form = () => {
 
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [validPassword, setValidPassword] = useState(false);
+  const [validEmail, setValidEmail] = useState(false);
+  const [checkPassword, setCheckPassword] = useState("");
 
   useEffect(() => {
     fetch("https://64393d6f4660f26eb1adef4f.mockapi.io/users")
@@ -26,7 +29,9 @@ const Form = () => {
 
   const submitHandler = (event: any) => {
     event.preventDefault();
-
+    if (userEmail === "") {
+      setValidEmail(true);
+    }
     let found = false;
     for (let i = 0; i < loginInfo.length; i++) {
       if (
@@ -37,11 +42,33 @@ const Form = () => {
         break;
       }
     }
+    const uppercaseRegExp = /(?=.*?[A-Z])/;
+    const lowercaseRegExp = /(?=.*?[a-z])/;
+    const digitsRegExp = /(?=.*?[0-9])/;
+    const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
+    const minLengthRegExp = /.{6,}/;
+    const uppercasePassword = uppercaseRegExp.test(userPassword);
+    const lowercasePassword = lowercaseRegExp.test(userPassword);
+    const digitsPassword = digitsRegExp.test(userPassword);
+    const specialCharPassword = specialCharRegExp.test(userPassword);
+    const minLengthPassword = minLengthRegExp.test(userPassword);
 
-    if (found === true) {
-      navigate("/home");
+    if (!minLengthPassword) {
+      setCheckPassword("Password should be at least 6 characters");
+    } else if (!uppercasePassword) {
+      setCheckPassword("Password should be at least one Uppercase");
+    } else if (!lowercasePassword) {
+      setCheckPassword("Password should be at least one Lowercase");
+    } else if (!digitsPassword) {
+      setCheckPassword("Password should be at least one digit");
+    } else if (!specialCharPassword) {
+      setCheckPassword("Password should be at least one Special Characters");
     } else {
-      alert("Email Or Password Incorrect!");
+      setValidPassword(true);
+    }
+
+    if (found === true && validPassword === true) {
+      navigate("/home");
     }
   };
 
@@ -60,12 +87,18 @@ const Form = () => {
           placeholder="Email"
           onChange={(e) => setUserEmail(e.target.value)}
         />
+        {validEmail === true && (
+          <div className="text-red-500 text-sm my-0">Email Cannot be empty</div>
+        )}
         <input
           className="w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
           type=""
           placeholder="Password"
           onChange={(e) => setUserPassword(e.target.value)}
         />
+        {validPassword === false && (
+          <div className="text-red-500 text-sm my-0">{checkPassword}</div>
+        )}
         <div className="flex items-center justify-between">
           <div className="text-sm ml-auto">
             <Link text={"Forgot your password?"} />
