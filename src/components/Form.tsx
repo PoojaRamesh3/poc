@@ -30,15 +30,15 @@ const Form = () => {
     let found = false;
     for (var i = 0; i < loginInfo.length; i++) {
       if (
-        loginInfo[i].email == userEmail &&
-        loginInfo[i].password == userPassword
+        loginInfo[i].email === userEmail &&
+        loginInfo[i].password === userPassword
       ) {
         found = true;
         break;
       }
     }
 
-    if (found == true) {
+    if (found === true) {
       navigate("/home");
     } else {
       alert("Login Failed!");
