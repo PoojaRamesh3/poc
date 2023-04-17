@@ -3,8 +3,14 @@ import Link from "./Link";
 import CopyRight from "./CopyRight";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import "./styles/Form.css";
 
 const Form = () => {
+  const responseMessage = (response: any) => {
+    console.log(response);
+  };
+
   const navigate = useNavigate();
 
   const [loginInfo, setLoginInfo] = useState<any>({
@@ -41,7 +47,7 @@ const Form = () => {
     if (found === true) {
       navigate("/home");
     } else {
-      alert("Login Failed!");
+      alert("Email Or Password Incorrect!");
     }
   };
 
@@ -83,7 +89,9 @@ const Form = () => {
           <span className="h-px w-16 bg-gray-200"></span>
         </div>
         <div className="flex justify-center gap-5 w-full ">
-          <SocialMediaButton label={"Google"} />
+          <GoogleLogin onSuccess={responseMessage} />
+        </div>
+        <div className="flex justify-center w-3/5 cust-margin">
           <SocialMediaButton label={"Facebook"} />
         </div>
       </form>
