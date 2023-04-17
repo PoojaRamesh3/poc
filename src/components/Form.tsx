@@ -5,8 +5,31 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import "./styles/Form.css";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const Form = () => {
+  const [user, setUser] = useState([]);
+  const [profile, setProfile] = useState([]);
+
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse: any) => setUser(codeResponse),
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(
+          `https://accounts.google.com/o/oauth2/auth/identifier?client_id=870020665279-a4nv0qe49vgim5cfef28g36rb22vpqg1.apps.googleusercontent.com&redirect_uri=http://localhost:3000/`
+        )
+        .then((res) => {
+          setProfile(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
   const responseMessage = (response: any) => {
     console.log(response);
   };
