@@ -38,7 +38,7 @@ const Form = () => {
       }
     }
 
-    if (found == true && userPassword != null) {
+    if (found == true) {
       navigate("/home");
     } else {
       alert("Login Failed!");
