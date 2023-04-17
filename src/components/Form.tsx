@@ -3,6 +3,7 @@ import Link from "./Link";
 import CopyRight from "./CopyRight";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./styles/Form.css";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -88,7 +89,9 @@ const Form = () => {
           onChange={(e) => setUserEmail(e.target.value)}
         />
         {validEmail === true && (
-          <div className="text-red-500 text-sm my-0">Email Cannot be empty</div>
+          <div className="text-red-500 text-sm cust-margin">
+            Email Cannot be empty
+          </div>
         )}
         <input
           className="w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
@@ -97,7 +100,9 @@ const Form = () => {
           onChange={(e) => setUserPassword(e.target.value)}
         />
         {validPassword === false && (
-          <div className="text-red-500 text-sm my-0">{checkPassword}</div>
+          <div className="text-red-500 text-sm cust-margin">
+            {checkPassword}
+          </div>
         )}
         <div className="flex items-center justify-between">
           <div className="text-sm ml-auto">
