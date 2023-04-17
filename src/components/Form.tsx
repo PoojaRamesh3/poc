@@ -90,7 +90,7 @@ const Form = () => {
         />
         {validEmail === true && (
           <div className="text-red-500 text-sm cust-margin">
-            Email Cannot be empty
+            Email cannot be empty
           </div>
         )}
         <input
