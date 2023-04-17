@@ -13,7 +13,7 @@ const Form = () => {
           Don't have an account? <Link text={"Sign Up"} />
         </p>
       </div>
-      <div className="space-y-6">
+      <form className="space-y-6">
         <FormInput placeholder={"Email"} />
         <FormInput placeholder={"Password"} />
         <div className="flex items-center justify-between">
@@ -31,7 +31,7 @@ const Form = () => {
           <SocialMediaButton label={"Google"} />
           <SocialMediaButton label={"Facebook"} />
         </div>
-      </div>
+      </form>
       <CopyRight />
     </div>
   );
