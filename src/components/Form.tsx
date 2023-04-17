@@ -3,37 +3,8 @@ import Link from "./Link";
 import CopyRight from "./CopyRight";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "@react-oauth/google";
-import "./styles/Form.css";
-import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 
 const Form = () => {
-  const [user, setUser] = useState([]);
-  const [profile, setProfile] = useState([]);
-
-  const login = useGoogleLogin({
-    onSuccess: (codeResponse: any) => setUser(codeResponse),
-    onError: (error) => console.log("Login Failed:", error),
-  });
-
-  useEffect(() => {
-    if (user) {
-      axios
-        .get(
-          `https://accounts.google.com/o/oauth2/auth/identifier?client_id=870020665279-a4nv0qe49vgim5cfef28g36rb22vpqg1.apps.googleusercontent.com&redirect_uri=http://localhost:3000/`
-        )
-        .then((res) => {
-          setProfile(res.data);
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [user]);
-
-  const responseMessage = (response: any) => {
-    console.log(response);
-  };
-
   const navigate = useNavigate();
 
   const [loginInfo, setLoginInfo] = useState<any>({
@@ -57,7 +28,7 @@ const Form = () => {
     event.preventDefault();
 
     let found = false;
-    for (var i = 0; i < loginInfo.length; i++) {
+    for (let i = 0; i < loginInfo.length; i++) {
       if (
         loginInfo[i].email === userEmail &&
         loginInfo[i].password === userPassword
@@ -111,10 +82,9 @@ const Form = () => {
           <span className="text-gray-500 font-normal">or</span>
           <span className="h-px w-16 bg-gray-200"></span>
         </div>
-        <div className="flex justify-center gap-5 w-full ">
-          <GoogleLogin onSuccess={responseMessage} />
-        </div>
-        <div className="flex justify-center w-3/5 cust-margin">
+
+        <div className="flex justify-center w-full gap-5">
+          <SocialMediaButton label={"Google"} />
           <SocialMediaButton label={"Facebook"} />
         </div>
       </form>
