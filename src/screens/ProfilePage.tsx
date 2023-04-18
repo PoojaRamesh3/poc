@@ -2,6 +2,7 @@ import NavBar from "../components/NavBar";
 
 const ProfilePage = () => {
   const profile = require("../assets/profile.png");
+
   return (
     <>
       <NavBar />

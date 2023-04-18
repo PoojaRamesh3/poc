@@ -45,6 +45,7 @@ const Form = () => {
         break;
       }
     }
+
     const uppercaseRegExp = /(?=.*?[A-Z])/;
     const lowercaseRegExp = /(?=.*?[a-z])/;
     const digitsRegExp = /(?=.*?[0-9])/;
@@ -77,6 +78,8 @@ const Form = () => {
       setCheckEmail("Email does not exists");
     }
   };
+
+  localStorage.setItem("user", userEmail);
 
   return (
     <div className="p-12 bg-white mx-auto rounded-3xl w-96 ">
