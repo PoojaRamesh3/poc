@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   const pooja = require("../assets/pooja.jfif");
   const logo = require("../assets/Logo.svg.png");
-  const bell = require("../assets/bell.png");
+  const bell = require("../assets/Capture.PNG");
 
   const sideBarLists = [
     {
@@ -14,7 +14,7 @@ const NavBar = () => {
     {
       id: 2,
       title: "Teams",
-      url: "/teams",
+      url: "/team",
     },
     {
       id: 3,
@@ -32,13 +32,15 @@ const NavBar = () => {
     <div className="flex flex-row justify-between items-center bg-gray-800 text-white font-bold">
       <ul className="flex flex-row justify-between items-center">
         <li className="nav-item">
-          <img
-            src={logo}
-            alt="Logo"
-            className="nav-link p-4"
-            width={75}
-            height={75}
-          />
+          <Link to={"/home"}>
+            <img
+              src={logo}
+              alt="Logo"
+              className="nav-link p-4"
+              width={75}
+              height={75}
+            />
+          </Link>
         </li>
         {sideBarLists.map((item, index) => (
           <li className="nav-item">
@@ -59,8 +61,8 @@ const NavBar = () => {
             <img
               src={bell}
               alt="Notofication"
-              width={33}
-              height={33}
+              width={30}
+              height={30}
               className="rounded-full bg-white"
             />
           </button>
