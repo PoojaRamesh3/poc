@@ -19,6 +19,7 @@ const Form = () => {
   const [validPassword, setValidPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
   const [checkPassword, setCheckPassword] = useState("");
+  const [checkEmail, setCheckEmail] = useState("");
 
   useEffect(() => {
     fetch("https://64393d6f4660f26eb1adef4f.mockapi.io/users")
@@ -30,8 +31,9 @@ const Form = () => {
 
   const submitHandler = (event: any) => {
     event.preventDefault();
-    if (userEmail === "") {
+    if (userEmail === " ") {
       setValidEmail(true);
+      setCheckEmail("Email cannot be empty");
     }
     let found = false;
     for (let i = 0; i < loginInfo.length; i++) {
@@ -70,6 +72,9 @@ const Form = () => {
 
     if (found === true && validPassword === true) {
       navigate("/home");
+    } else if (found === false) {
+      setValidEmail(true);
+      setCheckEmail("Email does not exists");
     }
   };
 
@@ -89,9 +94,7 @@ const Form = () => {
           onChange={(e) => setUserEmail(e.target.value)}
         />
         {validEmail === true && (
-          <div className="text-red-500 text-sm cust-margin">
-            Email cannot be empty
-          </div>
+          <div className="text-red-500 text-sm cust-margin">{checkEmail}</div>
         )}
         <input
           className="w-full text-sm  px-4 py-3 bg-gray-200 focus:bg-gray-100 border  border-gray-200 rounded-lg focus:outline-none focus:border-purple-400"
