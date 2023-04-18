@@ -18,10 +18,7 @@ const NavBar = () => {
   const pooja = require("../assets/pooja.jfif");
 
   return (
-    <Disclosure
-      as="nav"
-      className="bg-purple-900 bg-gradient-to-l from-gray-900 via-gray-900 to-purple-800"
-    >
+    <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
