@@ -1,18 +1,19 @@
 import NavBar from "../components/NavBar";
 
-const ProfilePage = () => {
-  const profile = require("../assets/profile.png");
+const SettingPage = () => {
+  const setting = require("../assets/setting.png");
+
   return (
     <>
       <NavBar />
       <div className="flex items-center justify-center h-screen">
-        <img src={profile} alt="" />
+        <img src={setting} alt="" />
         <div className="bg-black text-white font-bold rounded-lg border shadow-lg p-10">
-          <h1>Profile setting will be displayed here!</h1>
+          <h1>Settings options will be displayed here!</h1>
         </div>
       </div>
     </>
   );
 };
 
-export default ProfilePage;
+export default SettingPage;
