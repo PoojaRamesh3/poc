@@ -1,19 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import Form from "../components/Form";
-import { useEffect, useState } from "react";
+
 const LoginPage = () => {
   const login = require("../assets/login.webp");
-  const [user, setUser] = useState<any>(localStorage.getItem("user"));
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user == null) {
-      navigate("/");
-    } else {
-      navigate("/home");
-    }
-  }, []);
-  console.log("xxxx", user);
   return (
     <>
       <div className="bg-purple-900 absolute top-0 left-0 bg-gradient-to-b from-gray-900 via-gray-900 to-purple-800 bottom-0 leading-5 h-full w-full overflow-hidden"></div>
