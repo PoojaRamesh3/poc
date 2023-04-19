@@ -55,7 +55,9 @@ const NavBar = () => {
       url: "/",
     },
   ];
-
+  const localRemove = (item: any) => {
+    item.title === "Logout" && localStorage.removeItem("user");
+  };
   return (
     <>
       <div className="flex flex-row justify-between items-center bg-gray-800 text-white font-bold">
@@ -114,7 +116,11 @@ const NavBar = () => {
           <ul>
             {dropDownLists.map((item, index) => (
               <li className="p-2.5 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white rounded-md">
-                <Link key={index} to={item.url}>
+                <Link
+                  key={index}
+                  to={item.url}
+                  onClick={() => localRemove(item)}
+                >
                   <span>
                     <img
                       src={item.img}

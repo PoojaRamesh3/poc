@@ -31,6 +31,7 @@ const Form = () => {
 
   const submitHandler = (event: any) => {
     event.preventDefault();
+
     if (userEmail === " ") {
       setValidEmail(true);
       setCheckEmail("Email cannot be empty");
@@ -41,6 +42,7 @@ const Form = () => {
         loginInfo[i].email === userEmail &&
         loginInfo[i].password === userPassword
       ) {
+        localStorage.setItem("user", userEmail);
         found = true;
         break;
       }
@@ -78,8 +80,6 @@ const Form = () => {
       setCheckEmail("Email does not exists");
     }
   };
-
-  localStorage.setItem("user", userEmail);
 
   return (
     <div className="p-12 bg-white mx-auto rounded-3xl w-96 ">
