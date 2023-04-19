@@ -29,9 +29,10 @@ const Form = () => {
       });
   }, []);
 
+  console.log("ffff", loginInfo);
   const submitHandler = (event: any) => {
+    console.log("rrrrr", userEmail);
     event.preventDefault();
-
     if (userEmail === " ") {
       setValidEmail(true);
       setCheckEmail("Email cannot be empty");
