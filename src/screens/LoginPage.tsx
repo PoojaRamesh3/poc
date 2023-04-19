@@ -1,7 +1,19 @@
 import Form from "../components/Form";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const login = require("../assets/login.webp");
+  const [user] = useState<any>(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user == null) {
+      navigate("/");
+    } else {
+      navigate("/home");
+    }
+  }, []);
 
   return (
     <>
