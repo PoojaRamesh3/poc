@@ -122,7 +122,7 @@ const Form = () => {
         </button>
         <div className="flex items-center justify-center space-x-2 my-5">
           <span className="h-px w-16 bg-gray-200"></span>
-          <span className="text--500 font-normal">or</span>
+          <span className="text-gray-500 font-normal">or</span>
           <span className="h-px w-16 bg-gray-200"></span>
         </div>
 
