@@ -76,7 +76,7 @@ const NavBar = () => {
           {menuItems.map((item, index) => (
             <li className="nav-item">
               <Link
-                key={index}
+                key={item.id}
                 to={item.url}
                 className="nav-link p-4 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                 aria-current="page"
