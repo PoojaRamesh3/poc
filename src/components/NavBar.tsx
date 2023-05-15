@@ -73,7 +73,7 @@ const NavBar = () => {
               />
             </Link>
           </li>
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <li className="nav-item">
               <Link
                 key={item.id}
